@@ -23,3 +23,14 @@ deck = FrenchDeck()
 print(len(deck))
 print(deck[3])
 print(random.choice(deck))
+
+sorting_range = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+
+
+def get_sorted_weight(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(sorting_range) + sorting_range[card.suit]
+
+
+for card in sorted(deck, key=get_sorted_weight):
+    print(card)
